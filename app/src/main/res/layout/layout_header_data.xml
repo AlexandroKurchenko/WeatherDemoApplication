@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.okurchenko.weatherdemoapplication.utils.ResourceHolder.DataStatus" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+        <variable
+            name="viewModel"
+            type="com.okurchenko.weatherdemoapplication.ui.main.fragments.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}"
+        app:layout_optimizationLevel="standard|dimensions|chains">
+
+        <TextView
+            android:id="@+id/aggregatedInfo"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@{viewModel.headerData.data.aggregatedInfo}"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="City, Country code(49.00,33.48)" />
+
+        <TextView
+            android:id="@+id/datetime"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginBottom="@dimen/minimal_indent"
+            android:text="@{viewModel.headerData.data.datetime}"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aggregatedInfo"
+            tools:text="2019-12-05:12" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

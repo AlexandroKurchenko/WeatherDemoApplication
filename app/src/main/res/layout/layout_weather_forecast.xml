@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.okurchenko.weatherdemoapplication.utils.ResourceHolder.DataStatus" />
+
+        <variable
+            name="viewModel"
+            type="com.okurchenko.weatherdemoapplication.ui.main.fragments.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/weatherForecastPlaceHolder"
+            layout="@layout/placeholder_forecast_items"
+            bind:isVisible="@{viewModel.weatherForecast.status == DataStatus.LOADING}"
+            tools:visibility="gone" />
+
+        <include
+            android:id="@+id/weatherForecastData"
+            layout="@layout/weather_forecast_data"
+            bind:isVisible="@{viewModel.weatherForecast.status == DataStatus.SUCCESS}"
+            bind:weatherForecast="@{viewModel.weatherForecast.data}" />
+
+        <include
+            android:id="@+id/weatherForecastNoData"
+            layout="@layout/empty_data_layout"
+            bind:errorMsg="@{viewModel.weatherForecast.error.message}"
+            bind:isVisible="@{viewModel.weatherForecast.status == DataStatus.ERROR}"
+            bind:syncAction="@{viewModel.updateWeatherForecast}"
+            tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

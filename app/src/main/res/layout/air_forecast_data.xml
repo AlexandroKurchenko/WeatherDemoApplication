@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+        <variable
+            name="airQualityForecast"
+            type="java.util.List&lt;com.okurchenko.weatherdemoapplication.repositories.db.model.CurrentAirQuality&gt;" />
+
+        <variable
+            name="adapter"
+            type="com.okurchenko.weatherdemoapplication.ui.main.fragments.main.adapter.AirForecastAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}">
+
+        <TextView
+            android:id="@+id/airForecastLabel"
+            style="@style/TitleLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/air_quality_history_label"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/air_quality_history_label" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/airForecastList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:orientation="horizontal"
+            bind:adapter="@{adapter}"
+            bind:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            bind:layout_constraintTop_toBottomOf="@+id/airForecastLabel"
+            bind:setAdapterItems="@{airQualityForecast}"
+            tools:listitem="@layout/list_item_air_forecast" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

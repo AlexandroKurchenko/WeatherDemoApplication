@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+    </data>
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}"
+        app:shimmer_auto_start="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_optimizationLevel="standard|dimensions|chains">
+
+            <View
+                android:id="@+id/airQualityLabel"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/placeholder_title_text_height"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/airQualityIndexLabel"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginStart="@dimen/minimal_indent"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/airQualityLabel" />
+
+            <View
+                android:id="@+id/concentrationLabel"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/placeholder_subtitle_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/concentrationDivider" />
+
+            <View
+                android:id="@+id/concentrationDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/airQualityIndexLabel" />
+
+            <View
+                android:id="@+id/coLabel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginStart="@dimen/minimal_indent"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginEnd="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toStartOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/concentrationLabel" />
+
+            <View
+                android:id="@+id/o3Label"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginEnd="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toStartOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="@+id/coLabel"
+                app:layout_constraintTop_toBottomOf="@+id/coLabel" />
+
+            <View
+                android:id="@+id/so2Label"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginEnd="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toStartOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="@+id/o3Label"
+                app:layout_constraintTop_toBottomOf="@+id/o3Label" />
+
+            <View
+                android:id="@+id/no2Label"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginEnd="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toStartOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="@+id/so2Label"
+                app:layout_constraintTop_toBottomOf="@+id/so2Label" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="100dp"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintBottom_toBottomOf="@+id/no2Label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/coLabel" />
+
+            <View
+                android:id="@+id/particulateMatterLabel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginStart="@dimen/minimal_indent"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginEnd="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/concentrationLabel" />
+
+            <View
+                android:id="@+id/pm25Label"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginEnd="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/particulateMatterLabel"
+                app:layout_constraintTop_toBottomOf="@+id/particulateMatterLabel" />
+
+            <View
+                android:id="@+id/pm10Label"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginEnd="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/pm25Label"
+                app:layout_constraintTop_toBottomOf="@+id/pm25Label" />
+
+
+            <View
+                android:id="@+id/forecastDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/no2Label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+</layout>

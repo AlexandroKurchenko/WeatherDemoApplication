@@ -1,0 +1,63 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.okurchenko.weatherdemoapplication.ui.main.fragments.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/activity_padding"
+        bind:layout_optimizationLevel="standard|dimensions|chains">
+
+        <include
+            android:id="@+id/currentAirLayout"
+            layout="@layout/layout_current_air"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            bind:layout_constraintBottom_toTopOf="@+id/airForecastLayout"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            bind:layout_constraintVertical_chainStyle="packed"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/airForecastLayout"
+            layout="@layout/layout_air_forecast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            bind:layout_constraintBottom_toTopOf="@+id/currentWeatherLayout"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="@+id/currentAirLayout"
+            bind:layout_constraintTop_toBottomOf="@+id/currentAirLayout"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/currentWeatherLayout"
+            layout="@layout/layout_current_weather"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            bind:layout_constraintBottom_toTopOf="@+id/weatherForecastLayout"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="@+id/airForecastLayout"
+            bind:layout_constraintTop_toBottomOf="@+id/airForecastLayout"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/weatherForecastLayout"
+            layout="@layout/layout_weather_forecast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="@+id/currentWeatherLayout"
+            bind:layout_constraintTop_toBottomOf="@+id/currentWeatherLayout"
+            bind:viewModel="@{viewModel}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

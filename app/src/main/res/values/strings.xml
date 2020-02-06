@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Weather Demo Application</string>
+    <string name="air_quality_label">Air Quality</string>
+    <string name="aqi_label">Air Quality Index [US - EPA standard]: %1$s</string>
+    <string name="concentrations_label">Concentrations: </string>
+    <string name="o3_label">Of surface O3: %1$s µg/m³</string>
+    <string name="so2_label">Of surface SO2: %1$s µg/m³</string>
+    <string name="no2_label">Of surface NO2: %1$s µg/m³</string>
+    <string name="carbon_monoxide_label">Of carbon monoxide: %1$s µg/m³</string>
+    <string name="concentration_of_particulate_matter">Of particulate matter:</string>
+    <string name="two_microns_label"> &#60; 2.5 microns: %1$s µg/m³</string>
+    <string name="ten_microns_label"> &#60; 10 microns: %1$s µg/m³</string>
+    <string name="air_quality_history_label">Air Quality Forecast</string>
+
+    <string name="weather_label">Weather Information</string>
+    <string name="weather_update_time">Observation time:\n%1$s</string>
+    <string name="temp_feels_like">Feels like: %1$s</string>
+    <string name="pressure">Pressure: %1$s</string>
+    <string name="humidity">Humidity: %1$s</string>
+    <string name="wind_speed">Wind speed: %1$s</string>
+    <string name="wind_direction">Wind direction: %1$s</string>
+    <string name="weather_forecast">Weather Forecast</string>
+    <string name="min_temp_label">min. %1$s</string>
+    <string name="max_temp_label">max. %1$s</string>
+    <string name="offline_label">Offline state</string>
+
+    <string-array name="aqi_labels">
+        <item>Good</item>
+        <item>Moderate</item>
+        <item>Unhealthy for Sensitive Groups</item>
+        <item>Unhealthy</item>
+        <item>Very Unhealthy</item>
+        <item>Hazardous</item>
+    </string-array>
+</resources>

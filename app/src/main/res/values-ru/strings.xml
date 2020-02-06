@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="air_quality_label">Качество воздуха</string>
+    <string name="aqi_label">Индекс качества воздуха  [US - EPA стандарт]: %1$s</string>
+    <string name="concentrations_label">Концентрации: </string>
+    <string name="o3_label">Поверхности O3: %1$s µg/m³</string>
+    <string name="so2_label">Поверхности SO2: %1$s µg/m³</string>
+    <string name="no2_label">Поверхности NO2: %1$s µg/m³</string>
+    <string name="carbon_monoxide_label">Угарного газа: %1$s µg/m³</string>
+    <string name="concentration_of_particulate_matter">Твердых частиц:</string>
+    <string name="two_microns_label"> &#60; 2.5 микрон: %1$s µg/m³</string>
+    <string name="ten_microns_label"> &#60; 10 микрон: %1$s µg/m³</string>
+    <string name="air_quality_history_label">Прогноз качества воздуха</string>
+
+    <string name="weather_label">Информация о погоде</string>
+    <string name="weather_update_time">Время наблюдения:\n%1$s</string>
+    <string name="temp_feels_like">По ощущениям: %1$s</string>
+    <string name="pressure">Давление: %1$s</string>
+    <string name="humidity">Влажность: %1$s</string>
+    <string name="wind_speed">Скорость ветра: %1$s</string>
+    <string name="wind_direction">Направление ветра: %1$s</string>
+    <string name="weather_forecast">Прогноз погоды</string>
+    <string name="min_temp_label">мин. %1$s</string>
+    <string name="max_temp_label">мaкс. %1$s</string>
+    <string name="offline_label">Оффлайн режим</string>
+
+    <string-array name="aqi_labels">
+        <item>Хороший</item>
+        <item>Умеренный</item>
+        <item>Нездоровый для чувствительных групп</item>
+        <item>Нездоровый</item>
+        <item>Очень вредно для здоровья</item>
+        <item>Опасный</item>
+    </string-array>
+</resources>

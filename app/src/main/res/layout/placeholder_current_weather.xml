@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+    </data>
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}"
+        app:shimmer_auto_start="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_optimizationLevel="standard|dimensions|chains">
+
+            <View
+                android:id="@+id/weatherLabelItem"
+                android:layout_width="175dp"
+                android:layout_height="@dimen/placeholder_title_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/weatherUpdateTimeText"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintBottom_toBottomOf="@+id/weatherLabelItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/weatherLabelItem" />
+
+            <View
+                android:id="@+id/weatherTextItem"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginStart="@dimen/minimal_indent"
+                android:layout_marginTop="16dp"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="@+id/weatherLabelItem"
+                app:layout_constraintTop_toBottomOf="@+id/weatherLabelItem" />
+
+            <View
+                android:id="@+id/weatherTemperatureTextItem"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="@+id/weatherTextItem"
+                app:layout_constraintTop_toBottomOf="@+id/weatherTextItem" />
+
+            <View
+                android:id="@+id/weatherDescriptionTextItem"
+                android:layout_width="75dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="@+id/weatherTemperatureTextItem"
+                app:layout_constraintTop_toBottomOf="@+id/weatherTemperatureTextItem" />
+
+            <View
+                android:id="@+id/weather2DescriptionTextItem"
+                android:layout_width="125dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="@+id/weatherDescriptionTextItem"
+                app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionTextItem" />
+
+            <View
+                android:id="@+id/weather3DescriptionTextItem"
+                android:layout_width="75dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="@+id/weather2DescriptionTextItem"
+                app:layout_constraintTop_toBottomOf="@+id/weather2DescriptionTextItem" />
+
+
+            <View
+                android:id="@+id/weatherTemp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintBottom_toBottomOf="@+id/weather3DescriptionTextItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/weatherTextItem" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+</layout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+        <variable
+            name="weatherForecast"
+            type="java.util.List&lt;com.okurchenko.weatherdemoapplication.repositories.db.model.WeatherForecast&gt;" />
+
+        <variable
+            name="adapter"
+            type="com.okurchenko.weatherdemoapplication.ui.main.fragments.main.adapter.WeatherForecastAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}">
+
+        <TextView
+            android:id="@+id/weatherForecastLabel"
+            style="@style/TitleLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/weather_forecast"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/weather_forecast" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weatherForecastList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:orientation="horizontal"
+            bind:adapter="@{adapter}"
+            bind:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            bind:layout_constraintTop_toBottomOf="@+id/weatherForecastLabel"
+            bind:setAdapterItems="@{weatherForecast}"
+            tools:listitem="@layout/list_item_weather_forecast" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

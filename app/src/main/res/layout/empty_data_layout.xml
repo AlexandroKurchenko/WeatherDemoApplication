@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+        <variable
+            name="errorMsg"
+            type="String" />
+
+        <variable
+            name="syncAction"
+            type="kotlin.jvm.functions.Function0&lt;kotlin.Unit&gt;" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}"
+        bind:layout_optimizationLevel="standard|dimensions|chains">
+
+        <TextView
+            android:id="@+id/errorMsgLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/minimal_indent"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/minimal_indent"
+            android:text="@{errorMsg}"
+            bind:layout_constraintEnd_toStartOf="@+id/syncImage"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            tools:text="Some general error" />
+
+        <ImageView
+            android:id="@+id/syncImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()->syncAction.invoke()}"
+            android:src="@drawable/ic_sync_black_24dp"
+            bind:layout_constraintBottom_toBottomOf="@+id/errorMsgLabel"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintTop_toTopOf="@+id/errorMsgLabel"
+            tools:ignore="ContentDescription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

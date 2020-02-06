@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+    </data>
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}"
+        app:shimmer_auto_start="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_optimizationLevel="standard|dimensions|chains">
+
+            <View
+                android:id="@+id/weather4DescriptionTextItem"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/title_label_text_size"
+                android:layout_marginTop="16dp"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/weatherThumbFirst"
+                android:layout_width="@dimen/placeholder_image"
+                android:layout_height="@dimen/placeholder_image"
+                android:layout_marginStart="@dimen/minimal_indent"
+                android:layout_marginTop="16dp"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toStartOf="@+id/weatherThumbSecond"
+                app:layout_constraintStart_toStartOf="@+id/weather4DescriptionTextItem"
+                app:layout_constraintTop_toBottomOf="@+id/weather4DescriptionTextItem" />
+
+            <View
+                android:id="@+id/weatherThumbSecond"
+                android:layout_width="@dimen/placeholder_image"
+                android:layout_height="@dimen/placeholder_image"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toStartOf="@+id/weatherThumbThird"
+                app:layout_constraintStart_toEndOf="@+id/weatherThumbFirst"
+                app:layout_constraintTop_toTopOf="@+id/weatherThumbFirst" />
+
+            <View
+                android:id="@+id/weatherThumbThird"
+                android:layout_width="@dimen/placeholder_image"
+                android:layout_height="@dimen/placeholder_image"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toStartOf="@+id/weatherThumbFour"
+                app:layout_constraintStart_toEndOf="@+id/weatherThumbSecond"
+                app:layout_constraintTop_toTopOf="@+id/weatherThumbSecond" />
+
+            <View
+                android:id="@+id/weatherThumbFour"
+                android:layout_width="@dimen/placeholder_image"
+                android:layout_height="@dimen/placeholder_image"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/weatherThumbThird"
+                app:layout_constraintTop_toTopOf="@+id/weatherThumbThird" />
+
+            <View
+                android:id="@+id/weatherDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weatherThumbFour" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+</layout>

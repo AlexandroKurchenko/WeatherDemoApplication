@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_padding">16dp</dimen>
+    <dimen name="big_placeholder_image">128dp</dimen>
+    <dimen name="placeholder_image">75dp</dimen>
+    <dimen name="placeholder_title_text_height">18dp</dimen>
+    <dimen name="placeholder_subtitle_text_height">16dp</dimen>
+    <dimen name="placeholder_text_height">14dp</dimen>
+    <dimen name="weather_min_max_temp_size">12sp</dimen>
+    <dimen name="weather_item_temp_size">18sp</dimen>
+    <dimen name="weather_temp_size">24sp</dimen>
+    <dimen name="label_text_size">12sp</dimen>
+    <dimen name="subtitle_label_text_size">16sp</dimen>
+    <dimen name="title_label_text_size">18sp</dimen>
+    <dimen name="minimal_indent">8dp</dimen>
+</resources>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.okurchenko.weatherdemoapplication.utils.AqiUtilsKt" />
+
+        <import type="com.okurchenko.weatherdemoapplication.utils.ResourceHolder.DataStatus" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+        <variable
+            name="currentAirQuality"
+            type="com.okurchenko.weatherdemoapplication.repositories.db.model.CurrentAirQuality" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}">
+
+        <TextView
+            android:id="@+id/airQualityLabel"
+            style="@style/TitleLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/air_quality_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/air_quality_label" />
+
+        <TextView
+            android:id="@+id/airQualityIndexLabel"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/minimal_indent"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text='@{@string/aqi_label(@stringArray/aqi_labels[AqiUtilsKt.getAqiIndex(currentAirQuality.aqi)]) + " ["+ currentAirQuality.aqi+"]"}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/airQualityLabel"
+            tools:text="@string/aqi_label" />
+
+        <TextView
+            android:id="@+id/concentrationsLabel"
+            style="@style/SubtitleLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@string/concentrations_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/concentrationDivider"
+            tools:text="@string/concentrations_label" />
+
+
+        <View
+            android:id="@+id/concentrationDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:background="@color/placeHolderBg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/airQualityIndexLabel" />
+
+        <TextView
+            android:id="@+id/coLabel"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/minimal_indent"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            android:text="@{@string/carbon_monoxide_label(currentAirQuality.co)}"
+            app:layout_constraintEnd_toStartOf="@+id/verticalDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/concentrationsLabel"
+            tools:text="@string/carbon_monoxide_label" />
+
+        <TextView
+            android:id="@+id/o3Label"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            android:text="@{@string/o3_label(currentAirQuality.o3)}"
+            app:layout_constraintEnd_toStartOf="@+id/verticalDivider"
+            app:layout_constraintStart_toStartOf="@+id/coLabel"
+            app:layout_constraintTop_toBottomOf="@+id/coLabel"
+            tools:text="@string/o3_label" />
+
+        <TextView
+            android:id="@+id/so2Label"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            android:text="@{@string/so2_label(currentAirQuality.so2)}"
+            app:layout_constraintEnd_toStartOf="@+id/verticalDivider"
+            app:layout_constraintStart_toStartOf="@+id/o3Label"
+            app:layout_constraintTop_toBottomOf="@+id/o3Label"
+            tools:text="@string/so2_label" />
+
+        <TextView
+            android:id="@+id/no2Label"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            android:text="@{@string/no2_label(currentAirQuality.no2)}"
+            app:layout_constraintEnd_toStartOf="@+id/verticalDivider"
+            app:layout_constraintStart_toStartOf="@+id/so2Label"
+            app:layout_constraintTop_toBottomOf="@+id/so2Label"
+            tools:text="@string/no2_label" />
+
+        <View
+            android:id="@+id/verticalDivider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/minimal_indent"
+            android:background="@color/placeHolderBg"
+            app:layout_constraintBottom_toBottomOf="@+id/no2Label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.55"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/coLabel" />
+
+        <TextView
+            android:id="@+id/particulateMatterLabel"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            android:text="@string/concentration_of_particulate_matter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/verticalDivider"
+            app:layout_constraintTop_toBottomOf="@+id/concentrationsLabel"
+            tools:text="@string/concentration_of_particulate_matter" />
+
+
+        <TextView
+            android:id="@+id/pm25Label"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            android:text="@{@string/two_microns_label(currentAirQuality.pm25)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/particulateMatterLabel"
+            app:layout_constraintTop_toBottomOf="@+id/particulateMatterLabel"
+            tools:text="@string/two_microns_label" />
+
+        <TextView
+            android:id="@+id/pm10Label"
+            style="@style/LabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            android:text="@{@string/ten_microns_label(currentAirQuality.pm10)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/pm25Label"
+            app:layout_constraintTop_toBottomOf="@+id/pm25Label"
+            tools:text="@string/ten_microns_label" />
+
+        <View
+            android:id="@+id/forecastDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/placeHolderBg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/no2Label" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

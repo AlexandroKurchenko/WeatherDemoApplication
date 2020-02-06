@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+    </data>
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}"
+        app:shimmer_auto_start="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:layout_optimizationLevel="standard|dimensions|chains">
+
+            <View
+                android:id="@+id/aggregatedInfo"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/dateTime"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/placeholder_text_height"
+                android:layout_marginTop="@dimen/minimal_indent"
+                android:layout_marginBottom="@dimen/minimal_indent"
+                android:background="@color/placeHolderBg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aggregatedInfo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+</layout>

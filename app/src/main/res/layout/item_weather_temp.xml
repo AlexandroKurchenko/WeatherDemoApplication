@@ -1,0 +1,52 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="weatherData"
+            type="com.okurchenko.weatherdemoapplication.repositories.db.model.CurrentWeatherData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/weatherTempLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weatherData.temp}"
+            android:textSize="@dimen/weather_temp_size"
+            app:layout_constraintBottom_toTopOf="@+id/weatherDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/weatherIcon"
+            tools:text="12 C" />
+
+        <TextView
+            android:id="@+id/weatherDescription"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@{weatherData.description}"
+            app:layout_constraintEnd_toEndOf="@+id/weatherIcon"
+            app:layout_constraintStart_toStartOf="@+id/weatherIcon"
+            app:layout_constraintTop_toBottomOf="@+id/weatherIcon"
+            tools:text="sunny weather" />
+
+        <ImageView
+            android:id="@+id/weatherIcon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="@dimen/minimal_indent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/weatherTempLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadCroppedImage="@{weatherData.iconUrl}"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/avatars[0]" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

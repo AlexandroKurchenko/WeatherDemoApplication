@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isVisible"
+            type="boolean" />
+
+        <variable
+            name="weatherData"
+            type="com.okurchenko.weatherdemoapplication.repositories.db.model.CurrentWeatherData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{isVisible ? View.VISIBLE : View.GONE}">
+
+        <TextView
+            android:id="@+id/weatherLabel"
+            style="@style/TitleLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@string/weather_label"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/weatherUpdate"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{@string/weather_update_time(weatherData.updateTime)}"
+            bind:layout_constraintBottom_toBottomOf="@+id/weatherLabel"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintTop_toTopOf="@+id/weatherLabel"
+            tools:text="@string/weather_update_time" />
+
+        <TextView
+            android:id="@+id/weatherFeelsLike"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/minimal_indent"
+            android:layout_marginTop="16dp"
+            android:text="@{@string/temp_feels_like(weatherData.tempFeels)}"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@+id/weatherLabel"
+            tools:text="@string/temp_feels_like" />
+
+        <TextView
+            android:id="@+id/weatherPressure"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@{@string/pressure(weatherData.pres)}"
+            bind:layout_constraintStart_toStartOf="@+id/weatherFeelsLike"
+            bind:layout_constraintTop_toBottomOf="@+id/weatherFeelsLike"
+            tools:text="@string/pressure" />
+
+        <TextView
+            android:id="@+id/weatherHumidity"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@{@string/humidity(weatherData.humidity)}"
+            bind:layout_constraintStart_toStartOf="@+id/weatherPressure"
+            bind:layout_constraintTop_toBottomOf="@+id/weatherPressure"
+            tools:text="@string/humidity" />
+
+        <TextView
+            android:id="@+id/weatherWindSpeed"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@{@string/wind_speed(weatherData.windSpeed)}"
+            bind:layout_constraintStart_toStartOf="@+id/weatherHumidity"
+            bind:layout_constraintTop_toBottomOf="@+id/weatherHumidity"
+            tools:text="@string/wind_speed" />
+
+        <TextView
+            android:id="@+id/weatherWindDirection"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimal_indent"
+            android:text="@{@string/wind_direction(weatherData.windDir)}"
+            bind:layout_constraintStart_toStartOf="@+id/weatherWindSpeed"
+            bind:layout_constraintTop_toBottomOf="@+id/weatherWindSpeed"
+            tools:text="@string/wind_direction" />
+
+        <include
+            layout="@layout/item_weather_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/minimal_indent"
+            bind:layout_constraintBottom_toBottomOf="@+id/weatherWindDirection"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintTop_toTopOf="@+id/weatherFeelsLike"
+            bind:weatherData="@{weatherData}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

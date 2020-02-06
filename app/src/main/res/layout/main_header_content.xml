@@ -1,0 +1,94 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.okurchenko.weatherdemoapplication.utils.ResourceHolder.DataStatus" />
+
+        <variable
+            name="viewModel"
+            type="com.okurchenko.weatherdemoapplication.ui.main.fragments.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <io.supercharge.shimmerlayout.ShimmerLayout
+            android:id="@+id/placeholderImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_placeholder_image"
+            android:visibility="@{viewModel.headerImageUrl.status == DataStatus.LOADING ? View.VISIBLE : View.GONE}"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            bind:shimmer_auto_start="true"
+            tools:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/placeHolderBg"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+        </io.supercharge.shimmerlayout.ShimmerLayout>
+
+        <ImageView
+            android:id="@+id/headerImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_placeholder_image"
+            android:scaleType="centerCrop"
+            android:visibility="@{viewModel.headerImageUrl.status == DataStatus.SUCCESS ? View.VISIBLE : View.GONE}"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            bind:loadImage="@{viewModel.headerImageUrl.data}"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@drawable/ic_launcher_background" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/imageBarriers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:barrierDirection="bottom"
+            bind:constraint_referenced_ids="placeholderImage,headerImage"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent" />
+
+        <include
+            android:id="@+id/headerPlaceholderLayout"
+            layout="@layout/placeholder_layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:isVisible="@{viewModel.headerData.status == DataStatus.LOADING}"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@+id/placeholderImage"
+            tools:visibility="gone" />
+
+        <include
+            android:id="@+id/headerDataLayout"
+            layout="@layout/layout_header_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:isVisible="@{viewModel.headerData.status == DataStatus.SUCCESS}"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@+id/imageBarriers"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/headerNoDataLayout"
+            layout="@layout/empty_data_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            bind:isVisible="@{viewModel.headerData.status == DataStatus.ERROR}"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="parent"
+            tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
