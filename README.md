@@ -1,6 +1,7 @@
 # WeatherDemoApplication
 Test application for study new skills
 ![App screenshot](weather.png)
+
 This project use weatherbit and pixabay API for fetching data
 
 This project use below libraries:
@@ -28,6 +29,7 @@ This project use below libraries:
     'com.jakewharton.timber:timber:4.7.1'
 
 For proper work of application it must contains base_config.gradle file with next content:
+
 ext {
     buildConfigDebug = [
             server_url: "https://api.weatherbit.io/v2.0/",
