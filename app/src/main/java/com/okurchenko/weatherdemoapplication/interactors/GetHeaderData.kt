@@ -20,12 +20,12 @@ class GetHeaderData @Inject constructor() :
         LiveData<ResourceHolder<HeaderData>> {
         return liveData {
             if (resourceHolder?.status == ResourceHolder.DataStatus.LOADING) {
-                emit(ResourceHolder.loading())
+                emit(ResourceHolder.loading<HeaderData>())
             } else {
                 getHeaderData(resourceHolder)?.let {
                     emit(ResourceHolder.success(it))
                 } ?: run {
-                    emit(ResourceHolder.error(GeneralError(GENERAL_ERROR_MSG)))
+                    emit(ResourceHolder.error<HeaderData>(GeneralError(GENERAL_ERROR_MSG)))
                 }
             }
         }

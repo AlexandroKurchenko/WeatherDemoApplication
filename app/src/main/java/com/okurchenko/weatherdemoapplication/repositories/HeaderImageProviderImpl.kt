@@ -27,16 +27,16 @@ class HeaderImageProviderImpl @Inject constructor(
     ): LiveData<ResourceHolder<String>> {
         return liveData(context = Dispatchers.IO) {
             if (resourceHolder?.status == ResourceHolder.DataStatus.LOADING) {
-                emit(ResourceHolder.loading())
+                emit(ResourceHolder.loading<String>())
             } else {
                 resourceHolder?.data?.let {
                     val url = getImageUrl(it.cityName, minWidth, minHeight)
                     when (val imageResponse = safeApiCall { api.getImageByQueryAsync(url).await() }) {
                         is NetworkResult.Success -> prepareResult(this, imageResponse)
-                        is NetworkResult.Error -> emit(ResourceHolder.error(GeneralError(imageResponse.networkError)))
+                        is NetworkResult.Error -> emit(ResourceHolder.error<String>(GeneralError(imageResponse.networkError)))
                     }
                 } ?: run {
-                    emit(ResourceHolder.error(GeneralError("City name is not defined")))
+                    emit(ResourceHolder.error<String>(GeneralError("City name is not defined")))
                 }
             }
         }

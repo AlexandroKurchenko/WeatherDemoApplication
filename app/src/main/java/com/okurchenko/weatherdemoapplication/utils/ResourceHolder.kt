@@ -10,8 +10,11 @@ class ResourceHolder<T> private constructor(
 
     companion object {
         fun <T> loading(): ResourceHolder<T> = ResourceHolder(status = DataStatus.LOADING)
-        fun <T> success(data: T): ResourceHolder<T> = ResourceHolder(data = data, status = DataStatus.SUCCESS)
-        fun <T> error(error: GeneralError): ResourceHolder<T> = ResourceHolder(error = error, status = DataStatus.ERROR)
+        fun <T> success(data: T): ResourceHolder<T> =
+            ResourceHolder(data = data, status = DataStatus.SUCCESS)
+
+        fun <T> error(error: GeneralError): ResourceHolder<T> =
+            ResourceHolder(error = error, status = DataStatus.ERROR)
     }
 
     enum class DataStatus {

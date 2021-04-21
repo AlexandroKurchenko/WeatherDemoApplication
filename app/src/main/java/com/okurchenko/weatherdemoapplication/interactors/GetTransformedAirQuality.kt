@@ -25,9 +25,9 @@ class GetTransformedAirQuality @Inject constructor() :
     override fun execute(params: Params): LiveData<ResourceHolder<Any>> =
         liveData(context = Dispatchers.Default) {
             when (params.airQualities.status) {
-                ResourceHolder.DataStatus.LOADING -> emit(ResourceHolder.loading())
+                ResourceHolder.DataStatus.LOADING -> emit(ResourceHolder.loading<Any>())
                 ResourceHolder.DataStatus.SUCCESS -> emit(getItemByAction(params.action, params.airQualities.data))
-                ResourceHolder.DataStatus.ERROR -> emit(ResourceHolder.error(params.airQualities.error!!))
+                ResourceHolder.DataStatus.ERROR -> emit(ResourceHolder.error<Any>(params.airQualities.error!!))
             }
         }
 
